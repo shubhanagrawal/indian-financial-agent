@@ -1,87 +1,177 @@
-Financial Synthesis Agent 🤖
-This project is a sophisticated, multi-stage AI agent designed to analyze and synthesize information from unstructured financial documents. It transforms dense annual reports, quarterly reports, and earnings call transcripts into a queryable and intelligent system, capable of performing tasks from simple Q&A to complex analytical summaries.
+Absolutely! Here's your **complete, professional, and clean README** for the **Financial Synthesis Agent 🤖**—combining all sections into a polished document, ready to be used as your project's `README.md` file.
 
-This repository documents the journey of building this agent, highlighting the real-world challenges and engineering solutions involved in making AI work with messy, domain-specific data.
+---
 
-Features
-Robust Data Processing Pipeline: Ingests and parses complex PDF documents, handling scanned pages (OCR), tables, and inconsistent layouts using unstructured, Poppler, and Tesseract.
+````markdown
+# 📊 Financial Synthesis Agent 🤖
 
-Intelligent RAG Pipeline:
+**Financial Synthesis Agent** is a sophisticated, multi-stage AI system built to analyze and synthesize insights from unstructured financial documents such as annual reports, quarterly filings, and earnings call transcripts.
 
-Builds a semantic search index using FAISS and sentence-transformers for meaning-based information retrieval.
+It transforms dense, domain-specific text into a **queryable, intelligent assistant** capable of handling both general Q&A and advanced analytical tasks such as SWOT analysis. This repository documents the real-world engineering decisions and challenges encountered while building such an AI system.
 
-Implements an advanced Map-Reduce strategy to handle large contexts and avoid the limitations of smaller LLMs.
+---
 
-Analytical Modes: The agent can perform both general Q&A and more complex, structured analyses like generating a SWOT summary.
+## 🚀 Features
 
-Interactive Web Interface: A user-friendly web app built with Streamlit allows for easy interaction with the agent.
+### 🔁 Robust Data Processing Pipeline
+- Ingests and parses complex PDF documents
+- Handles:
+  - Scanned pages using **Tesseract OCR**
+  - Tabular data and inconsistent layouts using **Unstructured** and **Poppler**
 
-Project Status
-The foundational RAG pipeline is complete and functional. The agent can successfully analyze documents for a single company (Reliance Industries) and provide source-backed answers.
+### 🧠 Intelligent Retrieval-Augmented Generation (RAG) Pipeline
+- Semantic search powered by **FAISS** and **Sentence Transformers**
+- **Map-Reduce** summarization strategy for managing long-context documents
+- Modular design for scalability and adaptability
 
-The next steps on the roadmap include:
+### 📊 Analytical Modes
+- Supports:
+  - Natural language Q&A from financial documents
+  - Structured insights such as **SWOT summaries**
 
-Knowledge Graph Integration: Building a Neo4j Knowledge Graph to enable the agent to perform multi-hop reasoning and answer questions that require connecting information across documents.
+### 💬 Interactive Web Interface
+- Built with **Streamlit** for an intuitive and accessible user experience
 
-Deployment: Deploying the Streamlit application to a cloud platform.
+---
 
-Scalability: Architecting an automated data ingestion pipeline to expand the agent's capabilities across a wider range of stocks.
+## 📌 Project Status
 
-Setup and Installation
-1. Clone the Repository
+✅ The foundational **RAG pipeline** is fully implemented and operational  
+✅ The system can process and respond to questions based on documents from **Reliance Industries**  
+✅ Answers are **source-backed** with semantic retrieval  
+
+### 🔮 Next Steps
+- 🔗 **Knowledge Graph Integration** using **Neo4j** for multi-hop reasoning
+- ☁️ **Deployment** of the Streamlit app to a cloud platform
+- 📈 **Scalability** through an automated ingestion pipeline for multi-company document handling
+
+---
+
+## 🛠️ Setup & Installation
+
+### 1. Clone the Repository
+
+```bash
 git clone https://github.com/YOUR_USERNAME/YOUR_REPOSITORY_NAME.git
 cd YOUR_REPOSITORY_NAME
+````
 
-2. Create a Python Environment
-It is highly recommended to use a virtual environment.
+### 2. Create and Activate a Python Environment
 
-# Create the environment
+```bash
+# Create virtual environment
 python -m venv rag
 
-# Activate the environment
+# Activate environment
 # On Windows:
 rag\Scripts\activate
+
 # On macOS/Linux:
 source rag/bin/activate
+```
 
-3. Install System Dependencies
-This project requires several system-level dependencies for PDF processing.
+### 3. Install System Dependencies
 
-Poppler: Follow installation instructions for your OS.
+* **Poppler** → [Installation Guide](https://poppler.freedesktop.org/)
+* **Tesseract OCR** → [Installation Guide](https://github.com/tesseract-ocr/tesseract)
 
-Tesseract: Follow installation instructions for your OS.
+Make sure both tools are available in your system's PATH.
 
-4. Install Python Packages
-Once the system dependencies are installed, install the required Python packages:
+### 4. Install Python Dependencies
 
+```bash
 pip install -r requirements.txt
+```
 
-5. Set Up API Keys
-Create a .env file inside the config/ directory.
+### 5. Set Up API Keys
 
-Add your Groq API key to this file:
+Create a `.env` file inside the `config/` directory with the following content:
 
+```env
 GROQ_API_KEY="gsk_..."
+```
 
-6. Gather Data
-Due to their size, the raw data files are not included in this repository. You will need to manually download the Annual Reports, Quarterly Reports, and Earnings Call Transcripts for your target company and place them in the appropriate subdirectories within data/raw/COMPANY_NAME/.
+### 6. Gather Financial Data
 
-How to Run
-The project is broken down into a professional, decoupled pipeline. Run the scripts in the following order:
+Download and place the following documents in the appropriate subdirectory:
 
-Step 1: Process Raw Documents
-First, run the parsers to clean the raw data.
+```
+data/raw/COMPANY_NAME/
+├── Annual_Reports/
+├── Quarterly_Reports/
+└── Earnings_Call_Transcripts/
+```
 
+---
+
+## ▶️ How to Run the Pipeline
+
+### ✅ Step 1: Process Raw Documents
+
+```bash
 python src/processing/document_parser.py
 python src/processing/transcript_parser.py
 python src/processing/news_parser.py
+```
 
-Step 2: Build the Vector Store
-This script will chunk the processed text and build the FAISS index.
+### ✅ Step 2: Build Vector Store
 
+```bash
 python src/retrieval/build_vector_store.py
+```
 
-Step 3: Run the Web Application
-Launch the Streamlit app to interact with the agent.
+### ✅ Step 3: Launch the Web App
 
+```bash
 streamlit run app.py
+```
+
+This will open an interactive Streamlit interface where you can upload queries and receive source-backed answers and summaries.
+
+---
+
+
+---
+
+## 🧠 Tech Stack
+
+* **Python**
+* **Tesseract OCR** for scanned documents
+* **Poppler + Unstructured** for PDF parsing
+* **FAISS + Sentence Transformers** for semantic search
+* **LangChain / Groq API** for LLM inference
+* **Streamlit** for UI
+* *(Coming Soon)* **Neo4j** for Knowledge Graph reasoning
+
+---
+
+## 👥 Contributing
+
+Contributions are welcome!
+If you have suggestions, find bugs, or want to extend the system, feel free to:
+
+* Fork the repo
+* Create a branch
+* Submit a Pull Request
+
+For major changes, please open an issue first to discuss your idea.
+
+---
+
+## 📄 License
+
+This project is licensed under the **MIT License**.
+
+---
+
+## 📬 Contact
+
+For questions or collaborations, please reach out via [GitHub Issues](https://github.com/YOUR_USERNAME/YOUR_REPOSITORY_NAME/issues) or connect on [LinkedIn](https://www.linkedin.com/in/YOUR_PROFILE/).
+
+---
+
+```
+
+---
+
+
