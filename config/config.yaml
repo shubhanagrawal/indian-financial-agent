@@ -1,0 +1,21 @@
+    # Configuration for the Financial Synthesis Engine
+
+    neo4j:
+      uri: "neo4j://127.0.0.1:7687"
+      username: "neo4j"
+      password: "password"
+
+    llm:
+      # We are now using a powerful model via the Groq API
+      model_name: "llama3-8b-8192" 
+      provider: "groq"
+
+    processing:
+      company_name: "RELIANCE_INDUSTRIES"
+      chunk_size: 4000
+      # List of high-quality document types to process
+      dirs_to_process:
+        - "annual_reports"
+        - "quarterly_reports"
+        - "earnings_transcripts"
+    
