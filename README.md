@@ -28,55 +28,60 @@ Deployment: Deploying the Streamlit application to a cloud platform.
 Scalability: Architecting an automated data ingestion pipeline to expand the agent's capabilities across a wider range of stocks.
 
 Setup and Installation
-1. Clone the Repository:
-
+1. Clone the Repository
 git clone https://github.com/YOUR_USERNAME/YOUR_REPOSITORY_NAME.git
 cd YOUR_REPOSITORY_NAME
 
-2. Create a Python Environment:
+2. Create a Python Environment
 It is highly recommended to use a virtual environment.
 
+# Create the environment
 python -m venv rag
-source rag/bin/activate  # On Windows, use `rag\Scripts\activate`
 
-3. Install Dependencies:
+# Activate the environment
+# On Windows:
+rag\Scripts\activate
+# On macOS/Linux:
+source rag/bin/activate
+
+3. Install System Dependencies
 This project requires several system-level dependencies for PDF processing.
 
 Poppler: Follow installation instructions for your OS.
 
 Tesseract: Follow installation instructions for your OS.
 
-Then, install the required Python packages:
+4. Install Python Packages
+Once the system dependencies are installed, install the required Python packages:
 
 pip install -r requirements.txt
 
-4. Set Up API Keys:
-
+5. Set Up API Keys
 Create a .env file inside the config/ directory.
 
 Add your Groq API key to this file:
 
 GROQ_API_KEY="gsk_..."
 
-5. Gather Data:
+6. Gather Data
 Due to their size, the raw data files are not included in this repository. You will need to manually download the Annual Reports, Quarterly Reports, and Earnings Call Transcripts for your target company and place them in the appropriate subdirectories within data/raw/COMPANY_NAME/.
 
 How to Run
 The project is broken down into a professional, decoupled pipeline. Run the scripts in the following order:
 
-1. Process Raw Documents:
-First, run the PDF, transcript, and news parsers to clean the raw data.
+Step 1: Process Raw Documents
+First, run the parsers to clean the raw data.
 
 python src/processing/document_parser.py
 python src/processing/transcript_parser.py
 python src/processing/news_parser.py
 
-2. Build the Vector Store:
+Step 2: Build the Vector Store
 This script will chunk the processed text and build the FAISS index.
 
 python src/retrieval/build_vector_store.py
 
-3. Run the Web Application:
+Step 3: Run the Web Application
 Launch the Streamlit app to interact with the agent.
 
 streamlit run app.py
