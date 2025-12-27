@@ -1,6 +1,5 @@
 
 
-````markdown
 # 📊 Financial Synthesis Agent 🤖
 
 **Financial Synthesis Agent** is a sophisticated, multi-stage AI system built to analyze and synthesize insights from unstructured financial documents such as annual reports, quarterly filings, and earnings call transcripts.
